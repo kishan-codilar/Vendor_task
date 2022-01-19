@@ -1,0 +1,35 @@
+<?php
+
+$vendor = $block->getAllvendor();
+?>
+<h2>Details of the vendor</h2>
+<div class="brand-listing">
+    
+    <?php if (count($vendor) > 0): ?>
+        <table>
+            <thead>
+            <tr>
+                <th>vendor Id</th>
+                <th><?php echo __('Vendorname') ?></th>
+                <th>Website</th>
+                <th>Email</th>
+            
+            </tr>
+            <?php foreach ($block->getAllvendor() as $vendor): ?>
+                <?php if($vendor->getIsActive()):?>
+                    <tr>
+                        <td><?php echo $vendor->getEntityid() ?></td>
+                        <td><a href="<?php echo $block->getVendorUrl().'entity_id/'. $vendor->getEntityId() ?>"><?php echo $vendor->getVendorname() ?></a>   
+                        </td>
+                        <td><?php echo $vendor->getWebsite() ?></td>
+                        <td><?php echo $vendor->getEmail() ?></td>
+                    </tr>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            </thead>
+        </table>
+    <?php else: ?>
+        <h3>No vendor Details are available</h3>
+    <?php endif; ?>
+
+</div>
